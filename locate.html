@@ -38,12 +38,29 @@
                 <li><a href="#">SOS</a></li>
             </ul>
         </div>
-        <div class="content">
-            <h1>TRACK YOUR PAW FRIEND</h1>
-            <P>Where is this mischievous buddy hiding</P>
-            <div class="btn">
-                <button type="button"><span></span><a href="locate.html" style="color: white; text-decoration: none;"> Refresh</a></button>
-            </div>
+        <div id="map"></div>
+    <script defer>
+      const map = L.map("map").setView([19.07609, 72.877], 11);
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        minZoom: 3,
+        attribution:
+          '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      }).addTo(map);
+
+      fetch("/s", {
+        method: "GET",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          let lat = data[0].lat;
+          let long = data[0].lng;
+          var marker = L.marker([lat, long], {
+            riseOnHover: true,
+          }).addTo(map);
+          marker.bindPopup("Kuro").openPopup();
+        });
+    </script>
         </div>
     </div>
 </body>
