@@ -10,6 +10,8 @@
     background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(images/wallpaper.jpg);
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .navbar {
@@ -123,3 +125,13 @@ button:hover {
     border: none;
 }
 
+.container {
+    height: 70vh;
+    overflow-y: scroll;
+  }
+  
+  .scroll-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
